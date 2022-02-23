@@ -1,11 +1,11 @@
 import io from 'socket.io-client';
-
 let socket;
+
 
 export const init = () => {
     console.log('Connecting....');
 
-    socket = io('http://localhost:19916', {
+    socket = io('/', {
         transports: ['websocket']
     });
 
@@ -24,8 +24,8 @@ export const sendMessage = (data) => {
     socket.emit('newMessage', data)
 }
 
-export const receiveMessage = (callback) =>{
-    socket.on('receiveMessage', (data)=>{
+export const receiveMessage = (callback) => {
+    socket.on('receiveMessage', (data) => {
         callback(data)
     })
 }
