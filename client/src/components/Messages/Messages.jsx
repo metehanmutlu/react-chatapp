@@ -8,12 +8,14 @@ import {
     getAllMessages,
 } from '../../api/socketApi';
 import { useMessages } from '../../contexts/MessagesContext';
+import { useNotification } from '../../contexts/NotificationContext';
 
 
 function Messages() {
     const [localUser, setLocalUser] = useState({})
     const { sendedMessages, setSendedMessages } = useMessages()
     const [visibility, setVisibility] = useState(true)
+    const { notification } = useNotification(true)
 
 
     // console.log('Messages Rendered');
@@ -38,17 +40,26 @@ function Messages() {
         })
         receiveMessage((data) => {
             console.log('newMessage');
-            document.visibilityState === 'hidden' && playSound()
+            const notf = JSON.parse(localStorage.getItem('notification'))
+            if (document.visibilityState === 'hidden' && notf) {
+                playSound()
+            }
             document.visibilityState === 'hidden' && (data['unseen'] = true)
             setSendedMessages(prev => [...prev, data])
         })
     }, [setSendedMessages])
 
+    useEffect(() => {
+        localStorage.setItem('notification', notification)
+    }, [notification])
+
     function playSound() {
         // console.log('played');
-        const audio = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3')
-        audio.volume = 0.5
-        return audio.play();
+        if (localStorage.getItem('notification')) {
+            const audio = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3')
+            audio.volume = 0.4
+            return audio.play();
+        }
     }
 
     const handleClass = (data) => {

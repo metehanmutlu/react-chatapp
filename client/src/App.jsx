@@ -7,6 +7,7 @@ import Login from './components/Login/Login';
 import { UserProvider } from './contexts/UserContext';
 import NotFound from './components/NotFound/NotFound';
 import { MessagesProvider } from './contexts/MessagesContext';
+import { NotificationProvider } from './contexts/NotificationContext';
 // import Register from './components/Register/Register';
 
 
@@ -17,18 +18,20 @@ function App() {
 
   return (
     <div className="App">
-      <MessagesProvider>
-        <UserProvider>
-          <Router>
-            <Routes>
-              <Route path='/' element={<Login />} />
-              <Route path='/chat' element={<Chat />} />
-              {/* <Route path='/register' element={<Register />} /> */}
-              <Route path='*' element={<NotFound />} />
-            </Routes>
-          </Router>
-        </UserProvider>
-      </MessagesProvider>
+      <NotificationProvider>
+        <MessagesProvider>
+          <UserProvider>
+            <Router>
+              <Routes>
+                <Route path='/' element={<Login />} />
+                <Route path='/chat' element={<Chat />} />
+                {/* <Route path='/register' element={<Register />} /> */}
+                <Route path='*' element={<NotFound />} />
+              </Routes>
+            </Router>
+          </UserProvider>
+        </MessagesProvider>
+      </NotificationProvider>
     </div>
   );
 }
