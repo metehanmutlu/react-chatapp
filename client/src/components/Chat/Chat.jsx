@@ -13,7 +13,7 @@ function Chat() {
 
     let navigate = useNavigate()
 
-    console.log('Chat Rendered');
+    // console.log('Chat Rendered');
     useEffect(() => {
         if (!user) {
             navigate('/')

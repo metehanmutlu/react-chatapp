@@ -16,7 +16,7 @@ function Messages() {
     const [visibility, setVisibility] = useState(true)
 
 
-    console.log('Messages Rendered');
+    // console.log('Messages Rendered');
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
         setLocalUser(user);

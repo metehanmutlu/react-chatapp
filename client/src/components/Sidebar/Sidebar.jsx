@@ -11,7 +11,7 @@ function Sidebar() {
     const { user } = useUser();
     const [connectedUsers, setConnectedUsers] = useState({})
 
-    console.log('Sidebar Rendered');
+    // console.log('Sidebar Rendered');
     useEffect(() => {
         sendLoginData(user);
         getLoginData((data) => {

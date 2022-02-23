@@ -12,8 +12,8 @@ function Input() {
     const [msg, setMsg] = useState('');
     const { setSendedMessages } = useMessages()
 
-    console.log('Input Rendered');
-
+    
+    // console.log('Input Rendered');
     function _sendMessage(e) {
         e.preventDefault();
         let _msg = msg;
