@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ScrollableFeed from 'react-scrollable-feed';
 import moment from 'moment';
 import { useEffect } from 'react';
+// import { usePageVisibility } from 'react-page-visibility';
 
 
 function Messages({ sendedMessages }) {
@@ -16,15 +17,16 @@ function Messages({ sendedMessages }) {
         <ScrollableFeed forceScroll={true} className="messages">
             {sendedMessages.map((data, i) => {
                 // console.log(data); 
-                return (<div key={i} className={`message ${localUser.id === data.user.id && 'self'}`}>
-                    <div className="msgDetail">
-                        <span className="userName">{data.user.userName}</span>
-                        <span className="date">{moment.unix(data.time / 1000).format('HH:mm')}</span>
-                    </div>
-                    <div className="msgContent">
-                        {data.msg}
-                    </div>
-                </div>)
+                return (
+                    <div key={i} className={`message ${localUser.id === data.user.id ? 'self' : ''} ${(data.unseen) ? 'unseen' : ''}`}>
+                        <div className="msgDetail">
+                            <span className="userName">{data.user.userName}</span>
+                            <span className="date">{moment.unix(data.time / 1000).format('HH:mm')}</span>
+                        </div>
+                        <div className="msgContent">
+                            {data.msg}
+                        </div>
+                    </div>)
 
             })}
         </ScrollableFeed>

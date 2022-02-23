@@ -141,6 +141,7 @@ li {
 .message {
     /* border: 1px solid black; */
     background: var(--light-color);
+    
     border-radius: 5px;
     display: flex;
     align-items: flex-start;
@@ -149,9 +150,16 @@ li {
     margin: 10px 5px 15px;
     padding: 0px 8px 8px 8px;
     word-break: break-all;
-
     font-size: 12px;
+    transition: all 10s;
+}
 
+.unseen {
+    background: var(--success-color);
+}
+
+.seen{
+    background: var(--light-color);
 }
 
 .msgDetail {

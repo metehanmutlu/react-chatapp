@@ -15,6 +15,7 @@ import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import Messages from '../Messages/Messages';
 import Input from '../Input/Input';
+import { usePageVisibility } from 'react-page-visibility';
 
 
 function Chat() {
@@ -22,8 +23,13 @@ function Chat() {
     const [msg, setMsg] = useState('');
     const [sendedMessages, setSendedMessages] = useState([])
     const [connectedUsers, setConnectedUsers] = useState({})
+    const isVisible = usePageVisibility()
 
     let navigate = useNavigate()
+
+    // document.addEventListener('visibilitychange', () => {
+    //     document.title = document.visibilityState
+    // })
 
     useEffect(() => {
         if (!user) {
@@ -40,10 +46,18 @@ function Chat() {
             })
             receiveMessage((data) => {
                 // console.log(data);
+                document.visibilityState === 'hidden' && playSound()
+                !isVisible && (data['unseen'] = true)
                 setSendedMessages(prev => [...prev, data])
             })
         }
-    }, [user, navigate])
+    }, [user, navigate, isVisible])
+
+    function playSound() {
+        const audio = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3')
+        audio.volume = 0.3
+        return audio.play();
+    }
 
     function _sendMessage(e) {
         e.preventDefault();
