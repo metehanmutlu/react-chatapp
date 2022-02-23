@@ -55,7 +55,7 @@ function Chat() {
 
     function playSound() {
         const audio = new Audio('https://notificationsounds.com/storage/sounds/file-sounds-1233-elegant.mp3')
-        audio.volume = 0.3
+        audio.volume = 0.2
         return audio.play();
     }
 
