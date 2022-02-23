@@ -12,7 +12,7 @@ function Input() {
     const [msg, setMsg] = useState('');
     const { setSendedMessages } = useMessages()
 
-    
+
     // console.log('Input Rendered');
     function _sendMessage(e) {
         e.preventDefault();
@@ -39,7 +39,7 @@ function Input() {
                 <input
                     type="text"
                     value={msg}
-                    onChange={(e) => { setMsg(e.target.value) }}
+                    onChange={(e) => { msg.length < 2000 && setMsg(e.target.value) }}
                     placeholder='Message...'
                     className='textInput'
                 />
