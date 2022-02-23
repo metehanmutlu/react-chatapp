@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useUser } from '../../contexts/UserContext';
+import moment from 'moment'
+import {
+    sendMessage,
+} from '../../api/socketApi';
+import { useMessages } from '../../contexts/MessagesContext';
 
 
-function Input({ _sendMessage, msg, setMsg }) {
+function Input() {
+    const { user } = useUser();
+    const [msg, setMsg] = useState('');
+    const { setSendedMessages } = useMessages()
+
+    console.log('Input Rendered');
+
+    function _sendMessage(e) {
+        e.preventDefault();
+        let _msg = msg;
+        _msg = _msg.trim()
+        if (_msg.length !== 0) {
+            let data = {
+                user: user,
+                msg: _msg,
+                // time: Date.now()
+                time: moment.now()
+            }
+            sendMessage(data)
+            data['self'] = true
+            setSendedMessages(prevState => [...prevState, data])
+            // console.log(sendedMessages);
+            setMsg('')
+        }
+    }
+
     return (
         <div className="input">
             <form onSubmit={_sendMessage}>
@@ -21,4 +52,4 @@ function Input({ _sendMessage, msg, setMsg }) {
     )
 }
 
-export default Input
+export default React.memo(Input)

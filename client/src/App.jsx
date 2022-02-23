@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './components/Login/Login';
 import { UserProvider } from './contexts/UserContext';
 import NotFound from './components/NotFound/NotFound';
+import { MessagesProvider } from './contexts/MessagesContext';
 // import Register from './components/Register/Register';
 
 
@@ -16,16 +17,18 @@ function App() {
 
   return (
     <div className="App">
-      <UserProvider>
-        <Router>
-          <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/chat' element={<Chat />} />
-            {/* <Route path='/register' element={<Register />} /> */}
-            <Route path='*' element={<NotFound />} />
-          </Routes>
-        </Router>
-      </UserProvider>
+      <MessagesProvider>
+        <UserProvider>
+          <Router>
+            <Routes>
+              <Route path='/' element={<Login />} />
+              <Route path='/chat' element={<Chat />} />
+              {/* <Route path='/register' element={<Register />} /> */}
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </Router>
+        </UserProvider>
+      </MessagesProvider>
     </div>
   );
 }

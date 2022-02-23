@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ScrollableFeed from 'react-scrollable-feed'
+import { useUser } from '../../contexts/UserContext';
+import {
+    sendLoginData,
+    getLoginData
+} from '../../api/socketApi';
 
 
-function Sidebar({ connectedUsers }) {
+function Sidebar() {
+    const { user } = useUser();
+    const [connectedUsers, setConnectedUsers] = useState({})
+
+    console.log('Sidebar Rendered');
+    useEffect(() => {
+        sendLoginData(user);
+        getLoginData((data) => {
+            setConnectedUsers(data)
+        })
+    }, [user])
+
     return (
         <div className="sidebar">
             <div className="room">
