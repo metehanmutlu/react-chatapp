@@ -1,7 +1,13 @@
-button {
+.loginBtn {
     padding: 10px 20px;
+    background: #667aff;
+    border: none;
+    border-radius: 5px;
+    color: white;
 }
 
-input {
+.loginInput {
     padding: 10px 20px;
+    border: none;
+    /* border-radius: 5px; */
 }

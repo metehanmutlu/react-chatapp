@@ -43,6 +43,7 @@ function Login() {
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                     placeholder='Kullanıcı Adı...'
+                    className='loginInput'
                 />
                 {/* {form.errors.email && form.touched.email && <div style={{ color: 'tomato' }}>{form.errors.email}</div>} */}
                 <br />
@@ -56,7 +57,7 @@ function Login() {
                 /> */}
                 {/* {form.errors.password && form.touched.password && <div style={{ color: 'tomato' }}>{form.errors.password}</div>} */}
                 <br />
-                <button type="submit">Giriş Yap</button>
+                <button className='loginBtn' type="submit">Giriş Yap</button>
                 <br />
                 {/* <code>{JSON.stringify(form.values)}</code> */}
                 <br />

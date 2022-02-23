@@ -100,6 +100,7 @@ li {
     border-radius: 5px;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
@@ -123,6 +124,7 @@ li {
     border-radius: 5px;
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
@@ -143,9 +145,13 @@ li {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    width: 300px;
+    max-width: 300px;
     margin: 10px 5px 15px;
     padding: 0px 8px 8px 8px;
+    word-break: break-all;
+
+    font-size: 12px;
+
 }
 
 .msgDetail {
@@ -155,7 +161,7 @@ li {
 
 .userName {
     color: var(--dark-color);
-    font-size: small;
+    /* font-size: small; */
     /* margin-right: 245px; */
     padding-right: 5px;
     cursor: pointer;
@@ -163,12 +169,12 @@ li {
 
 .date {
     color: gray;
-    font-size: small;
+    /* font-size: small; */
 }
 
 .msgContent {
     color: black;
-    font-size: small;
+    /* font-size: small; */
     font-weight: 500;
 }
 
@@ -188,12 +194,7 @@ li {
     padding: 15px 20px;
 }
 
-.input form input {
-    width: 700px;
-}
-
-.input form input {
-    resize: none;
+.textInput {
     width: 409px;
     padding: 10px 15px;
 }
@@ -218,3 +219,30 @@ li {
 }
 
 /* Input */
+
+@media screen and (max-width: 400px) {
+    body {
+        font-size: 10px;
+    }
+
+    .chatApp {
+        width: 390px
+    }
+
+    .message {
+        width: 190px;
+    }
+
+    .usersDetail li {
+
+    }
+
+    .message {
+        font-size: 10px;
+    }
+
+    .textInput {
+        width: 200px;
+        padding: 10px 15px;
+    }
+}

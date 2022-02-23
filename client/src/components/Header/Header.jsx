@@ -11,7 +11,7 @@ function Header() {
         <div className="header">
             <div className="logo">
                 <i className="fa-solid fa-message"></i>
-                <span>Chat App</span>
+                <span>ChatAppat</span>
             </div>
             <div className="leave">
                 <button onClick={() => {

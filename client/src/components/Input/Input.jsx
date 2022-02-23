@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 
-function Input({_sendMessage, msg, setMsg}) {
+function Input({ _sendMessage, msg, setMsg }) {
     return (
         <div className="input">
             <form onSubmit={_sendMessage}>
@@ -10,6 +10,7 @@ function Input({_sendMessage, msg, setMsg}) {
                     value={msg}
                     onChange={(e) => { setMsg(e.target.value) }}
                     placeholder='Message...'
+                    className='textInput'
                 />
                 <button className='sendBtn' type='submit'>
                     <i className="fa-solid fa-paper-plane"></i>
