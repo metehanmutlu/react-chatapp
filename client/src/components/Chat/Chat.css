@@ -114,7 +114,7 @@ li {
 }
 
 .usersDetail {
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 
 .usersDetail li {
@@ -233,9 +233,9 @@ li {
         width: 190px;
     }
 
-    .usersDetail li {
+    /* .usersDetail li {
 
-    }
+    } */
 
     .message {
         font-size: 10px;
