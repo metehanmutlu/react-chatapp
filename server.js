@@ -12,15 +12,10 @@ const path = require('path');
 
 app.use(cors());
 
-// app.get('/', (req, res) => {
-//     res.send('Hello World!');
-// })
-
-
-
 let connectedUsers = {}
 
 io.on('connection', (socket) => {
+    console.log('io is on');
     socket.emit('message', 'Welcome to my Chat App');
 
     socket.on('getAllMessages', () => {
