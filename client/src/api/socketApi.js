@@ -5,13 +5,13 @@ let socket;
 export const init = () => {
     console.log('Connecting....');
 
-    // socket = io('http://localhost:3001/', {
-    //     transports: ['websocket']
-    // });
-
-    socket = io('/', {
+    socket = io('http://localhost:3001/', {
         transports: ['websocket']
     });
+
+    // socket = io('/', {
+    //     transports: ['websocket']
+    // });
 
     socket.on('connect', () => {
         console.log('Connection done!');

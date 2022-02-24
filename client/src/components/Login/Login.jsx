@@ -45,7 +45,7 @@ function Login() {
                     placeholder='Kullanıcı Adı...'
                     className='loginInput'
                 />
-                {/* {form.errors.email && form.touched.email && <div style={{ color: 'tomato' }}>{form.errors.email}</div>} */}
+                {form.errors.userName && form.touched.userName && <div style={{ color: 'tomato' }}>{form.errors.userName}</div>}
                 <br />
                 {/* <input
                     type="password"

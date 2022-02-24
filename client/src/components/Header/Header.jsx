@@ -21,12 +21,12 @@ function Header() {
                 <input onChange={() => { setNotification(!notification) }} className="apple-switch" type="checkbox" checked={notification} />
             </label>
             {/* <span style={{ fontSize: '12px' }}>Notification</span> */}
-            <div className="leave">
+            {/* <div className="leave">
                 <button onClick={() => {
                     navigate('/');
                     setUser(null);
                 }}>Leave Room</button>
-            </div>
+            </div> */}
         </div>
     )
 }

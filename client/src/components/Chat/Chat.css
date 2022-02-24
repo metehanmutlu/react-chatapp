@@ -40,6 +40,7 @@ li {
     align-items: center;
     gap: 5px;
     font-size: x-large;
+    margin-left: 3%;
 }
 
 /* .logo i {} */
@@ -129,6 +130,7 @@ input.apple-switch:checked:after {
     background: var(--medium-color);
     padding: 20px;
     overflow-y: auto;
+    word-break: break-all;
 }
 
 .room {
