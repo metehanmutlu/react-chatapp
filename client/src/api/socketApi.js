@@ -13,7 +13,10 @@ export const init = () => {
     //     transports: ['websocket']
     // });
 
-    socket = io('https://react-mede-chatapp.herokuapp.com/socket.io/?EIO=4&transport=websocket');
+    socket = io('/', {
+        transports: ['websocket']
+    });
+
 
     socket.on('connect', () => {
         console.log('Connection done!');
