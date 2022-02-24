@@ -9,7 +9,7 @@ export const init = () => {
     //     transports: ['websocket']
     // });
 
-    socket = io('/', {
+    socket = io('https://react-mede-chatapp.herokuapp.com/socket.io/?EIO=4&transport=websocket', {
         transports: ['websocket']
     });
 
