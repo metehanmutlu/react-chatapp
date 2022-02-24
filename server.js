@@ -39,7 +39,13 @@ io.on('connection', (socket) => {
 
     socket.on('loginData', (data) => {
         connectedUsers[socket.id] = data;
+        connectedUsers[socket.id]['visible'] = true
         io.emit('loginData', connectedUsers);
+    })
+
+    socket.on('visible', (data) => {
+        connectedUsers[socket.id]['visible'] = data
+        io.emit('loginData', connectedUsers)
     })
 
     socket.on('disconnect', () => {

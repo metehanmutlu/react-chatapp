@@ -48,6 +48,16 @@ export const getAllMessages = (callback) => {
     })
 }
 
+export const sendVisibile = (data) => {
+    socket.emit('visible', data);
+}
+
+export const getVisible = (callback) => {
+    socket.on('visible', (data) => {
+        callback(data)
+    })
+}
+
 export const getLoginData = (callback) => {
     socket.on('loginData', (data) => {
         callback(data)

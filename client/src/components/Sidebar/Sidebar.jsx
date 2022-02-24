@@ -3,13 +3,15 @@ import ScrollableFeed from 'react-scrollable-feed'
 import { useUser } from '../../contexts/UserContext';
 import {
     sendLoginData,
-    getLoginData
+    getLoginData,
+    sendVisibile,
 } from '../../api/socketApi';
 
 
 function Sidebar() {
     const { user } = useUser();
     const [connectedUsers, setConnectedUsers] = useState({})
+    const [visibility, setVisibility] = useState(true)
 
     // console.log('Sidebar Rendered');
     useEffect(() => {
@@ -17,6 +19,18 @@ function Sidebar() {
         getLoginData((data) => {
             setConnectedUsers(data)
         })
+
+        function handleVisibilityChange() {
+            if (document.visibilityState === "visible") {
+                sendVisibile(true);
+                setVisibility(true);
+            } else {
+                sendVisibile(false);
+                setVisibility(false);
+            }
+        }
+
+        document.addEventListener("visibilitychange", handleVisibilityChange, false);
     }, [user])
 
     return (
@@ -35,7 +49,10 @@ function Sidebar() {
                 </div>
                 <ScrollableFeed forceScroll={true} className="usersDetail">
                     {Object.entries(connectedUsers).map(([id, data]) => {
-                        return <li key={id}>{data.userName}</li>
+                        return <li key={id} className='user'>
+                            <i className={`fa-solid fa-circle avaible ${!data.visible ? 'busy' : ''}`} />
+                            <span>{data.userName}</span>
+                        </li>
                     })}
                 </ScrollableFeed>
             </div>
