@@ -289,7 +289,11 @@ input.apple-switch:checked:after {
     cursor: pointer;
     transition: opacity 0.5s;
     height: 40px;
+}
 
+.sendBtn:active {
+    position: relative;
+    top: 3px;
 }
 
 .sendBtn i {

@@ -30,6 +30,7 @@ function Input() {
             setSendedMessages(prevState => [...prevState, data])
             // console.log(sendedMessages);
             setMsg('')
+            e.target.children[0].focus()
         }
     }
 
